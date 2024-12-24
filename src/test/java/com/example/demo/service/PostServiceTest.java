@@ -4,7 +4,6 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.dto.PostCreateDto;
 import com.example.demo.model.dto.PostUpdateDto;
 import com.example.demo.repository.PostEntity;
-import com.example.demo.repository.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,8 +23,6 @@ public class PostServiceTest {
 
     @Autowired
     private PostService postService;
-    @Autowired
-    private UserService userService;
 
     @Test
     void getById_를_사용하여_게시물_정보를_얻어올_수_있다() {
