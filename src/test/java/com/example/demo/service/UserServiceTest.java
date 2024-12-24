@@ -22,7 +22,6 @@ import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest
 @TestPropertySource("classpath:test-application.properties")
-@Sql("classpath:sql/user-service-test-data.sql")
 @SqlGroup({
         @Sql(value = "classpath:sql/user-service-test-data.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD),
         @Sql(value = "classpath:sql/delete-all-data.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
