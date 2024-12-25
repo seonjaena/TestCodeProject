@@ -25,7 +25,7 @@ public class PostServiceTest {
     private PostService postService;
 
     @Test
-    void getById_를_사용하여_게시물_정보를_얻어올_수_있다() {
+    void getById_를_이용하여_게시물_정보를_얻어올_수_있다() {
         // given
         // when
         PostEntity result = postService.getById(1);
@@ -35,7 +35,7 @@ public class PostServiceTest {
     }
 
     @Test
-    void getById_를_사용하여_잘못된_아이디를_넘기면_에러가_발생한다() {
+    void getById_를_이용하여_잘못된_아이디를_넘기면_에러가_발생한다() {
         // given
         // when
         // then
