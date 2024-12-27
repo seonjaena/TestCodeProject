@@ -3,7 +3,7 @@ package com.example.demo.user.controller;
 import com.example.demo.user.domain.UserStatus;
 import com.example.demo.user.domain.UserUpdate;
 import com.example.demo.user.infrastructure.UserEntity;
-import com.example.demo.user.infrastructure.UserRepository;
+import com.example.demo.user.infrastructure.UserJpaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class UserControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserJpaRepository userJpaRepository;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -78,7 +78,7 @@ public class UserControllerTest {
          * 따라서 LazyInitializationException이 발생함
          * 예외 내용: 'org.hibernate.LazyInitializationException: could not initialize proxy [com.example.demo.repository.UserEntity#2] - no Session'
           */
-        UserEntity result = userRepository.findById(2L).get();
+        UserEntity result = userJpaRepository.findById(2L).get();
         assertThat(result.getStatus()).isEqualTo(UserStatus.ACTIVE);
     }
 
