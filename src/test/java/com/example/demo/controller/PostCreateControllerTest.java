@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.dto.PostCreateDto;
+import com.example.demo.post.domain.PostCreate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +30,14 @@ public class PostCreateControllerTest {
 
     @Test
     void 게시물을_작성할_수_있다() throws Exception {
-        PostCreateDto postCreateDto = PostCreateDto.builder()
+        PostCreate postCreate = PostCreate.builder()
                 .writerId(1)
                 .content("create-post-test")
                 .build();
 
         mockMvc.perform(post("/api/posts")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(postCreateDto)))
+                .content(objectMapper.writeValueAsString(postCreate)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.content").value("create-post-test"))
@@ -47,14 +47,14 @@ public class PostCreateControllerTest {
     @Test
     void PENDING_상태의_사용자는_게시물을_작성할_수_없다() throws Exception {
 
-        PostCreateDto postCreateDto = PostCreateDto.builder()
+        PostCreate postCreate = PostCreate.builder()
                 .writerId(2)
                 .content("failed-to-create-post")
                 .build();
 
         mockMvc.perform(post("/api/posts")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(postCreateDto)))
+                .content(objectMapper.writeValueAsString(postCreate)))
                 .andExpect(status().isNotFound())
                 .andExpect(content().string("Users에서 ID 2를 찾을 수 없습니다."));
     }

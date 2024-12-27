@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.dto.PostUpdateDto;
+import com.example.demo.post.domain.PostUpdate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class PostControllerTest {
     void 게시물을_수정할_수_있다() throws Exception {
         // given
         String content = "hello-world-modified";
-        PostUpdateDto postUpdateDto = PostUpdateDto.builder()
+        PostUpdate postUpdate = PostUpdate.builder()
                 .content(content)
                 .build();
 
@@ -61,7 +61,7 @@ public class PostControllerTest {
         // then
         mockMvc.perform(put("/api/posts/1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(postUpdateDto)))
+                .content(objectMapper.writeValueAsString(postUpdate)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.content").value(content))
@@ -72,7 +72,7 @@ public class PostControllerTest {
     void 존재하지_않는_게시물을_수정할_수_없다() throws Exception {
         // given
         String content = "hello-world-modified";
-        PostUpdateDto postUpdateDto = PostUpdateDto.builder()
+        PostUpdate postUpdate = PostUpdate.builder()
                 .content(content)
                 .build();
 
@@ -80,7 +80,7 @@ public class PostControllerTest {
         // then
         mockMvc.perform(put("/api/posts/99999999")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(postUpdateDto)))
+                        .content(objectMapper.writeValueAsString(postUpdate)))
                 .andExpect(status().isNotFound())
                 .andExpect(content().string("Posts에서 ID 99999999를 찾을 수 없습니다."));
     }
