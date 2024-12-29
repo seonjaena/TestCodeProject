@@ -1,6 +1,7 @@
 package com.example.demo.post.service;
 
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
+import com.example.demo.post.domain.Post;
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
 import com.example.demo.post.infrastructure.PostEntity;
@@ -28,7 +29,7 @@ public class PostServiceTest {
     void getById_를_이용하여_게시물_정보를_얻어올_수_있다() {
         // given
         // when
-        PostEntity result = postService.getById(1);
+        Post result = postService.getById(1);
 
         // then
         assertThat(result.getId()).isEqualTo(1);
@@ -55,7 +56,7 @@ public class PostServiceTest {
                 .build();
 
         // when
-        PostEntity result = postService.create(postCreate);
+        Post result = postService.create(postCreate);
 
         // then
         assertThat(result.getId()).isEqualTo(2);
@@ -74,7 +75,7 @@ public class PostServiceTest {
                 .build();
 
         // when
-        PostEntity result = postService.update(1, postUpdate);
+        Post result = postService.update(1, postUpdate);
 
         // then
         assertThat(result.getId()).isEqualTo(1);
