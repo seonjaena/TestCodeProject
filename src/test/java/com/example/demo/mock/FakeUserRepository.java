@@ -17,6 +17,12 @@ public class FakeUserRepository implements UserRepository {
     private final List<User> data = new ArrayList<>();
 
     @Override
+    public User getById(long id) {
+        return data.stream().filter(item -> item.getId().equals(id)).findAny()
+                .orElseThrow(() -> new ResourceNotFoundException("Users", id));
+    }
+
+    @Override
     public Optional<User> findByIdAndStatus(long id, UserStatus userStatus) {
         return data.stream().filter(item -> item.getId().equals(id) && item.getStatus() == userStatus).findAny();
     }

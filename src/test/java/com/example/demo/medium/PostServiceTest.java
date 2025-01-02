@@ -4,7 +4,7 @@ import com.example.demo.common.domain.exception.ResourceNotFoundException;
 import com.example.demo.post.domain.Post;
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
-import com.example.demo.post.service.PostService;
+import com.example.demo.post.service.PostServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.*;
 public class PostServiceTest {
 
     @Autowired
-    private PostService postService;
+    private PostServiceImpl postService;
 
     @Test
     void getById_를_이용하여_게시물_정보를_얻어올_수_있다() {

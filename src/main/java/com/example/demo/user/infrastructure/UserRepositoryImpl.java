@@ -20,6 +20,14 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User getById(long id) {
+        Optional<UserEntity> user = userJpaRepository.findById(id);
+        return userJpaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Users", id))
+                .toModel();
+    }
+
+    @Override
     public Optional<User> findByIdAndStatus(long id, UserStatus userStatus) {
         return userJpaRepository.findByIdAndStatus(id, userStatus).map(UserEntity::toModel);
     }
