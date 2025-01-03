@@ -3,9 +3,9 @@ package com.example.demo.post.controller;
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
 import com.example.demo.mock.TestClockHolder;
 import com.example.demo.mock.TestContainer;
+import com.example.demo.post.controller.request.PostUpdateRequest;
 import com.example.demo.post.controller.response.PostResponse;
 import com.example.demo.post.domain.Post;
-import com.example.demo.post.domain.PostUpdate;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
 import org.junit.jupiter.api.Test;
@@ -99,7 +99,7 @@ public class PostControllerTest {
                 .build());
 
         // when
-        ResponseEntity<PostResponse> result = testContainer.postController.updatePost(1, PostUpdate.builder()
+        ResponseEntity<PostResponse> result = testContainer.postController.updatePost(1, PostUpdateRequest.builder()
                 .content("hello-world-modified")
                 .build());
 
@@ -120,7 +120,7 @@ public class PostControllerTest {
         // when
         // then
         assertThatThrownBy(() -> {
-            testContainer.postController.updatePost(999999999, PostUpdate.builder()
+            testContainer.postController.updatePost(999999999, PostUpdateRequest.builder()
                     .content("hello-world-modified")
                     .build());
         }).isInstanceOf(ResourceNotFoundException.class);

@@ -1,9 +1,8 @@
 package com.example.demo.post.controller;
 
 import com.example.demo.post.controller.port.PostService;
+import com.example.demo.post.controller.request.PostUpdateRequest;
 import com.example.demo.post.controller.response.PostResponse;
-import com.example.demo.post.domain.PostUpdate;
-import com.example.demo.post.service.PostServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +31,9 @@ public class PostController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PostResponse> updatePost(@PathVariable long id, @RequestBody PostUpdate postUpdate) {
+    public ResponseEntity<PostResponse> updatePost(@PathVariable long id, @RequestBody PostUpdateRequest postUpdateRequest) {
         return ResponseEntity
             .ok()
-            .body(PostResponse.from(postService.update(id, postUpdate)));
+            .body(PostResponse.from(postService.update(id, postUpdateRequest.toModel())));
     }
 }

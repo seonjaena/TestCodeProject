@@ -1,9 +1,8 @@
 package com.example.demo.post.controller;
 
 import com.example.demo.post.controller.port.PostService;
-import com.example.demo.post.domain.PostCreate;
+import com.example.demo.post.controller.request.PostCreateRequest;
 import com.example.demo.post.controller.response.PostResponse;
-import com.example.demo.post.service.PostServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +23,9 @@ public class PostCreateController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<PostResponse> createPost(@RequestBody PostCreate postCreate) {
+    public ResponseEntity<PostResponse> createPost(@RequestBody PostCreateRequest postCreateRequest) {
         return ResponseEntity
             .status(HttpStatus.CREATED)
-            .body(PostResponse.from(postService.create(postCreate)));
+            .body(PostResponse.from(postService.create(postCreateRequest.toModel())));
     }
 }

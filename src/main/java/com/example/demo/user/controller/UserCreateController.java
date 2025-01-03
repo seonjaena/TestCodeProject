@@ -1,10 +1,9 @@
 package com.example.demo.user.controller;
 
 import com.example.demo.user.controller.port.UserCreateService;
+import com.example.demo.user.controller.request.UserCreateRequest;
 import com.example.demo.user.domain.User;
-import com.example.demo.user.domain.UserCreate;
 import com.example.demo.user.controller.response.UserResponse;
-import com.example.demo.user.service.UserServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +24,8 @@ public class UserCreateController {
     private final UserCreateService userCreateService;
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserCreate userCreate) {
-        User user = userCreateService.create(userCreate);
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserCreateRequest userCreateRequest) {
+        User user = userCreateService.create(userCreateRequest.toModel());
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(UserResponse.from(user));

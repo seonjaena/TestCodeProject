@@ -3,9 +3,9 @@ package com.example.demo.post.controller;
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
 import com.example.demo.mock.TestClockHolder;
 import com.example.demo.mock.TestContainer;
+import com.example.demo.post.controller.request.PostCreateRequest;
 import com.example.demo.post.controller.response.PostResponse;
 import com.example.demo.post.domain.Post;
-import com.example.demo.post.domain.PostCreate;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ public class PostCreateControllerTest {
                 .build());
 
         // when
-        ResponseEntity<PostResponse> result = testContainer.postCreateController.createPost(PostCreate.builder()
+        ResponseEntity<PostResponse> result = testContainer.postCreateController.createPost(PostCreateRequest.builder()
                 .content("hello-world")
                 .writerId(1)
                 .build());
@@ -72,7 +72,7 @@ public class PostCreateControllerTest {
         // when
         // then
         assertThatThrownBy(() -> {
-            testContainer.postCreateController.createPost(PostCreate.builder()
+            testContainer.postCreateController.createPost(PostCreateRequest.builder()
                     .content("hello-world")
                     .writerId(1L)
                     .build());
