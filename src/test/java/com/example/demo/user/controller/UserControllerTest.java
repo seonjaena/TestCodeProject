@@ -39,10 +39,10 @@ public class UserControllerTest {
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
         assertThat(result.getBody()).isNotNull();
-        assertThat(result.getBody().getEmail()).isEqualTo("test@test.com");
-        assertThat(result.getBody().getNickname()).isEqualTo("sjna");
-        assertThat(result.getBody().getLastLoginAt()).isEqualTo(100);
-        assertThat(result.getBody().getStatus()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(result.getBody().email()).isEqualTo("test@test.com");
+        assertThat(result.getBody().nickname()).isEqualTo("sjna");
+        assertThat(result.getBody().lastLoginAt()).isEqualTo(100);
+        assertThat(result.getBody().status()).isEqualTo(UserStatus.ACTIVE);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class UserControllerTest {
 
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(302));
-        assertThat(testContainer.userRepository.getById(1).getStatus()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(testContainer.userRepository.getById(1).status()).isEqualTo(UserStatus.ACTIVE);
     }
 
     @Test
@@ -128,11 +128,11 @@ public class UserControllerTest {
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
         assertThat(result.getBody()).isNotNull();
-        assertThat(result.getBody().getEmail()).isEqualTo("test@test.com");
-        assertThat(result.getBody().getNickname()).isEqualTo("sjna");
-        assertThat(result.getBody().getAddress()).isEqualTo("Seoul");
-        assertThat(result.getBody().getLastLoginAt()).isEqualTo(1679530673958L);
-        assertThat(result.getBody().getStatus()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(result.getBody().email()).isEqualTo("test@test.com");
+        assertThat(result.getBody().nickname()).isEqualTo("sjna");
+        assertThat(result.getBody().address()).isEqualTo("Seoul");
+        assertThat(result.getBody().lastLoginAt()).isEqualTo(1679530673958L);
+        assertThat(result.getBody().status()).isEqualTo(UserStatus.ACTIVE);
     }
 
     @Test
@@ -160,11 +160,11 @@ public class UserControllerTest {
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
         assertThat(result.getBody()).isNotNull();
-        assertThat(result.getBody().getEmail()).isEqualTo("test@test.com");
-        assertThat(result.getBody().getNickname()).isEqualTo("sjna-m");
-        assertThat(result.getBody().getLastLoginAt()).isEqualTo(100);
-        assertThat(result.getBody().getAddress()).isEqualTo("Pangyo");
-        assertThat(result.getBody().getStatus()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(result.getBody().email()).isEqualTo("test@test.com");
+        assertThat(result.getBody().nickname()).isEqualTo("sjna-m");
+        assertThat(result.getBody().lastLoginAt()).isEqualTo(100);
+        assertThat(result.getBody().address()).isEqualTo("Pangyo");
+        assertThat(result.getBody().status()).isEqualTo(UserStatus.ACTIVE);
     }
 
 }

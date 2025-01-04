@@ -46,10 +46,10 @@ public class PostCreateControllerTest {
 
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(201));
-        assertThat(result.getBody().getId()).isEqualTo(2);
-        assertThat(result.getBody().getContent()).isEqualTo("hello-world");
-        assertThat(result.getBody().getCreatedAt()).isEqualTo(1679530673958L);
-        assertThat(result.getBody().getWriter().getId()).isEqualTo(1);
+        assertThat(result.getBody().id()).isEqualTo(2);
+        assertThat(result.getBody().content()).isEqualTo("hello-world");
+        assertThat(result.getBody().createdAt()).isEqualTo(1679530673958L);
+        assertThat(result.getBody().writer().id()).isEqualTo(1);
     }
 
     @Test

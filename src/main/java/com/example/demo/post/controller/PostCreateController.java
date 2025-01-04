@@ -1,6 +1,6 @@
 package com.example.demo.post.controller;
 
-import com.example.demo.post.controller.port.PostService;
+import com.example.demo.post.controller.port.PostCreateService;
 import com.example.demo.post.controller.request.PostCreateRequest;
 import com.example.demo.post.controller.response.PostResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PostCreateController {
 
-    private final PostService postService;
+    private final PostCreateService postCreateService;
 
     @PostMapping
     public ResponseEntity<PostResponse> createPost(@RequestBody PostCreateRequest postCreateRequest) {
         return ResponseEntity
             .status(HttpStatus.CREATED)
-            .body(PostResponse.from(postService.create(postCreateRequest.toModel())));
+            .body(PostResponse.from(postCreateService.create(postCreateRequest.toModel())));
     }
 }

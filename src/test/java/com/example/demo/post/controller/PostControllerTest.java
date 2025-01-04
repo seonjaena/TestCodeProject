@@ -43,9 +43,9 @@ public class PostControllerTest {
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
         assertThat(result.getBody()).isNotNull();
-        assertThat(result.getBody().getId()).isEqualTo(1);
-        assertThat(result.getBody().getContent()).isEqualTo("hello-world");
-        assertThat(result.getBody().getWriter().getId()).isEqualTo(1);
+        assertThat(result.getBody().id()).isEqualTo(1);
+        assertThat(result.getBody().content()).isEqualTo("hello-world");
+        assertThat(result.getBody().writer().id()).isEqualTo(1);
     }
 
     @Test
@@ -105,10 +105,10 @@ public class PostControllerTest {
 
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
-        assertThat(result.getBody().getId()).isEqualTo(1);
-        assertThat(result.getBody().getContent()).isEqualTo("hello-world-modified");
-        assertThat(result.getBody().getModifiedAt()).isEqualTo(1679530673958L);
-        assertThat(result.getBody().getWriter().getId()).isEqualTo(1);
+        assertThat(result.getBody().id()).isEqualTo(1);
+        assertThat(result.getBody().content()).isEqualTo("hello-world-modified");
+        assertThat(result.getBody().modifiedAt()).isEqualTo(1679530673958L);
+        assertThat(result.getBody().writer().id()).isEqualTo(1);
     }
 
     @Test

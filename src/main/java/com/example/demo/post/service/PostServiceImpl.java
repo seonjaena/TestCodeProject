@@ -2,7 +2,9 @@ package com.example.demo.post.service;
 
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
 import com.example.demo.common.service.port.ClockHolder;
-import com.example.demo.post.controller.port.PostService;
+import com.example.demo.post.controller.port.PostCreateService;
+import com.example.demo.post.controller.port.PostReadService;
+import com.example.demo.post.controller.port.PostUpdateService;
 import com.example.demo.post.domain.Post;
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
@@ -17,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Builder
 @RequiredArgsConstructor
-public class PostServiceImpl implements PostService {
+public class PostServiceImpl implements PostReadService, PostCreateService, PostUpdateService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
@@ -28,8 +30,8 @@ public class PostServiceImpl implements PostService {
     }
 
     public Post create(PostCreate postCreate) {
-        User writer = userRepository.findByIdAndStatus(postCreate.getWriterId(), UserStatus.ACTIVE)
-                .orElseThrow(() -> new ResourceNotFoundException("Users", postCreate.getWriterId()));
+        User writer = userRepository.findByIdAndStatus(postCreate.writerId(), UserStatus.ACTIVE)
+                .orElseThrow(() -> new ResourceNotFoundException("Users", postCreate.writerId()));
 
         Post post = Post.from(writer, postCreate, clockHolder);
         return postRepository.save(post);

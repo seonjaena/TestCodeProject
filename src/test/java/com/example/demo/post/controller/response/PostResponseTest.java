@@ -30,10 +30,10 @@ public class PostResponseTest {
         PostResponse postResponse = PostResponse.from(post);
 
         // then
-        assertThat(postResponse.getContent()).isEqualTo("helloworld");
-        assertThat(postResponse.getWriter().getEmail()).isEqualTo("test@test.com");
-        assertThat(postResponse.getWriter().getNickname()).isEqualTo("test");
-        assertThat(postResponse.getWriter().getStatus()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(postResponse.content()).isEqualTo("helloworld");
+        assertThat(postResponse.writer().email()).isEqualTo("test@test.com");
+        assertThat(postResponse.writer().nickname()).isEqualTo("test");
+        assertThat(postResponse.writer().status()).isEqualTo(UserStatus.ACTIVE);
     }
 
 }

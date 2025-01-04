@@ -62,7 +62,7 @@ public class UserServiceTest {
         User result = userService.getByEmail(email);
 
         // then
-        assertThat(result.getNickname()).isEqualTo("sjna");
+        assertThat(result.nickname()).isEqualTo("sjna");
     }
 
     @Test
@@ -84,7 +84,7 @@ public class UserServiceTest {
         User result = userService.getById(1);
 
         // then
-        assertThat(result.getNickname()).isEqualTo("sjna");
+        assertThat(result.nickname()).isEqualTo("sjna");
     }
 
     @Test
@@ -110,9 +110,9 @@ public class UserServiceTest {
         User result = userService.create(userCreate);
 
         // then
-        assertThat(result.getId()).isNotNull();
-        assertThat(result.getStatus()).isEqualTo(UserStatus.PENDING);
-        assertThat(result.getCertificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaab");
+        assertThat(result.id()).isNotNull();
+        assertThat(result.status()).isEqualTo(UserStatus.PENDING);
+        assertThat(result.certificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaab");
     }
 
     @Test
@@ -128,9 +128,9 @@ public class UserServiceTest {
 
         // then
         User user = userService.getById(1);
-        assertThat(user.getId()).isNotNull();
-        assertThat(user.getAddress()).isEqualTo("Incheon");
-        assertThat(user.getNickname()).isEqualTo("sjna-m");
+        assertThat(user.id()).isNotNull();
+        assertThat(user.address()).isEqualTo("Incheon");
+        assertThat(user.nickname()).isEqualTo("sjna-m");
     }
 
     @Test
@@ -146,7 +146,7 @@ public class UserServiceTest {
 
         // then
         User user = userService.getById(1);
-        assertThat(user.getLastLoginAt()).isEqualTo(1678530673958L);
+        assertThat(user.lastLoginAt()).isEqualTo(1678530673958L);
     }
 
     @Test
@@ -157,7 +157,7 @@ public class UserServiceTest {
 
         // then
         User user = userService.getById(2);
-        assertThat(user.getStatus()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(user.status()).isEqualTo(UserStatus.ACTIVE);
     }
 
     @Test

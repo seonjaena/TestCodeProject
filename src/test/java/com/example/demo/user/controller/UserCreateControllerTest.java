@@ -30,11 +30,11 @@ public class UserCreateControllerTest {
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(201));
         assertThat(result.getBody()).isNotNull();
-        assertThat(result.getBody().getEmail()).isEqualTo("test@test.com");
-        assertThat(result.getBody().getNickname()).isEqualTo("sjna");
-        assertThat(result.getBody().getLastLoginAt()).isNull();
-        assertThat(result.getBody().getStatus()).isEqualTo(UserStatus.PENDING);
-        assertThat(testContainer.userRepository.getById(1).getCertificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaaa");
+        assertThat(result.getBody().email()).isEqualTo("test@test.com");
+        assertThat(result.getBody().nickname()).isEqualTo("sjna");
+        assertThat(result.getBody().lastLoginAt()).isNull();
+        assertThat(result.getBody().status()).isEqualTo(UserStatus.PENDING);
+        assertThat(testContainer.userRepository.getById(1).certificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaaa");
     }
 
 }

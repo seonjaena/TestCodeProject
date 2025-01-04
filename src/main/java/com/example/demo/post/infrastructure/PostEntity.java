@@ -38,11 +38,11 @@ public class PostEntity {
 
     public static PostEntity fromModel(Post post) {
         PostEntity postEntity = new PostEntity();
-        postEntity.id = post.getId();
-        postEntity.content = post.getContent();
-        postEntity.createdAt = post.getCreatedAt();
-        postEntity.modifiedAt = post.getModifiedAt();
-        postEntity.writer = UserEntity.fromModel(post.getWriter());
+        postEntity.id = post.id();
+        postEntity.content = post.content();
+        postEntity.createdAt = post.createdAt();
+        postEntity.modifiedAt = post.modifiedAt();
+        postEntity.writer = UserEntity.fromModel(post.writer());
         return postEntity;
     }
 

@@ -22,12 +22,12 @@ public class UserTest {
         User user = User.from(userCreate, new TestUuidHolder("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaaa"));
 
         // then
-        assertThat(user.getId()).isNull();
-        assertThat(user.getEmail()).isEqualTo("test@test.com");
-        assertThat(user.getAddress()).isEqualTo("Seoul");
-        assertThat(user.getNickname()).isEqualTo("test");
-        assertThat(user.getStatus()).isEqualTo(UserStatus.PENDING);
-        assertThat(user.getCertificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaaa");
+        assertThat(user.id()).isNull();
+        assertThat(user.email()).isEqualTo("test@test.com");
+        assertThat(user.address()).isEqualTo("Seoul");
+        assertThat(user.nickname()).isEqualTo("test");
+        assertThat(user.status()).isEqualTo(UserStatus.PENDING);
+        assertThat(user.certificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaaa");
     }
 
     @Test
@@ -52,12 +52,12 @@ public class UserTest {
         user = user.update(userUpdate);
 
         // then
-        assertThat(user.getId()).isEqualTo(1L);
-        assertThat(user.getEmail()).isEqualTo("test@test.com");
-        assertThat(user.getAddress()).isEqualTo("Busan");
-        assertThat(user.getNickname()).isEqualTo("test");
-        assertThat(user.getStatus()).isEqualTo(UserStatus.ACTIVE);
-        assertThat(user.getCertificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaaaa-aaaaaaa");
+        assertThat(user.id()).isEqualTo(1L);
+        assertThat(user.email()).isEqualTo("test@test.com");
+        assertThat(user.address()).isEqualTo("Busan");
+        assertThat(user.nickname()).isEqualTo("test");
+        assertThat(user.status()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(user.certificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaaaa-aaaaaaa");
     }
 
     @Test
@@ -77,7 +77,7 @@ public class UserTest {
         user = user.login(new TestClockHolder(1678530673958L));
 
         // then
-        assertThat(user.getLastLoginAt()).isEqualTo(1678530673958L);
+        assertThat(user.lastLoginAt()).isEqualTo(1678530673958L);
     }
 
     @Test
@@ -97,7 +97,7 @@ public class UserTest {
         user = user.certificate("aaaaaaaaaaaaa-aaaaaaaa-aaaaaaa-aaaaaaa");
 
         // then
-        assertThat(user.getStatus()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(user.status()).isEqualTo(UserStatus.ACTIVE);
     }
 
     @Test

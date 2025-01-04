@@ -71,7 +71,7 @@ public class PostServiceTest {
         Post result = postService.getById(1);
 
         // then
-        assertThat(result.getId()).isEqualTo(1);
+        assertThat(result.id()).isEqualTo(1);
     }
 
     @Test
@@ -98,11 +98,11 @@ public class PostServiceTest {
         Post result = postService.create(postCreate);
 
         // then
-        assertThat(result.getId()).isNotNull();
-        assertThat(result.getContent()).isEqualTo(content);
-        assertThat(result.getWriter().getId()).isEqualTo(1);
-        assertThat(result.getCreatedAt()).isEqualTo(1679530673958L);
-        assertThat(result.getModifiedAt()).isNull();
+        assertThat(result.id()).isNotNull();
+        assertThat(result.content()).isEqualTo(content);
+        assertThat(result.writer().id()).isEqualTo(1);
+        assertThat(result.createdAt()).isEqualTo(1679530673958L);
+        assertThat(result.modifiedAt()).isNull();
     }
 
     @Test
@@ -117,10 +117,10 @@ public class PostServiceTest {
         Post result = postService.update(1, postUpdate);
 
         // then
-        assertThat(result.getId()).isEqualTo(1);
-        assertThat(result.getWriter().getId()).isEqualTo(1);
-        assertThat(result.getContent()).isEqualTo(content);
-        assertThat(result.getModifiedAt()).isEqualTo(1679530673958L);
+        assertThat(result.id()).isEqualTo(1);
+        assertThat(result.writer().id()).isEqualTo(1);
+        assertThat(result.content()).isEqualTo(content);
+        assertThat(result.modifiedAt()).isEqualTo(1679530673958L);
     }
 
 }

@@ -59,7 +59,7 @@ public class UserController {
         @RequestHeader("EMAIL") String email // 일반적으로 스프링 시큐리티를 사용한다면 UserPrincipal 에서 가져옵니다.
     ) {
         User user = userReadService.getByEmail(email);
-        authenticationService.login(user.getId());
+        authenticationService.login(user.id());
         user = userReadService.getByEmail(email);
 
         return ResponseEntity
@@ -75,7 +75,7 @@ public class UserController {
         @RequestBody UserUpdateRequest userUpdateRequest
     ) {
         User user = userReadService.getByEmail(email);
-        user = userUpdateService.update(user.getId(), userUpdateRequest.toModel());
+        user = userUpdateService.update(user.id(), userUpdateRequest.toModel());
         return ResponseEntity
             .ok()
             .body(MyProfileResponse.from(user));

@@ -1,6 +1,7 @@
 package com.example.demo.post.controller;
 
-import com.example.demo.post.controller.port.PostService;
+import com.example.demo.post.controller.port.PostReadService;
+import com.example.demo.post.controller.port.PostUpdateService;
 import com.example.demo.post.controller.request.PostUpdateRequest;
 import com.example.demo.post.controller.response.PostResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,19 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PostController {
 
-    private final PostService postService;
+    private final PostReadService postReadService;
+    private final PostUpdateService postUpdateService;
 
     @GetMapping("/{id}")
     public ResponseEntity<PostResponse> getPostById(@PathVariable long id) {
         return ResponseEntity
             .ok()
-            .body(PostResponse.from(postService.getById(id)));
+            .body(PostResponse.from(postReadService.getById(id)));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<PostResponse> updatePost(@PathVariable long id, @RequestBody PostUpdateRequest postUpdateRequest) {
         return ResponseEntity
             .ok()
-            .body(PostResponse.from(postService.update(id, postUpdateRequest.toModel())));
+            .body(PostResponse.from(postUpdateService.update(id, postUpdateRequest.toModel())));
     }
 }

@@ -26,12 +26,12 @@ public class UserResponseTest {
         MyProfileResponse userResponse = MyProfileResponse.from(user);
 
         // then
-        assertThat(userResponse.getId()).isEqualTo(1L);
-        assertThat(userResponse.getEmail()).isEqualTo("test@test.com");
-        assertThat(userResponse.getNickname()).isEqualTo("test");
-        assertThat(userResponse.getAddress()).isEqualTo("Seoul");
-        assertThat(userResponse.getStatus()).isEqualTo(UserStatus.ACTIVE);
-        assertThat(userResponse.getLastLoginAt()).isEqualTo(100L);
+        assertThat(userResponse.id()).isEqualTo(1L);
+        assertThat(userResponse.email()).isEqualTo("test@test.com");
+        assertThat(userResponse.nickname()).isEqualTo("test");
+        assertThat(userResponse.address()).isEqualTo("Seoul");
+        assertThat(userResponse.status()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(userResponse.lastLoginAt()).isEqualTo(100L);
     }
 
 }

@@ -1,15 +1,8 @@
 package com.example.demo.post.domain;
 
 import lombok.Builder;
-import lombok.Getter;
 
-@Getter
-public class PostUpdate {
+@Builder
+public record PostUpdate(String content) {
 
-    private final String content;
-
-    @Builder
-    public PostUpdate(String content) {
-        this.content = content;
-    }
 }

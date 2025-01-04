@@ -1,17 +1,8 @@
 package com.example.demo.user.domain;
 
 import lombok.Builder;
-import lombok.Getter;
 
-@Getter
-public class UserUpdate {
+@Builder
+public record UserUpdate(String nickname, String address) {
 
-    private final String nickname;
-    private final String address;
-
-    @Builder
-    public UserUpdate(String nickname, String address) {
-        this.nickname = nickname;
-        this.address = address;
-    }
 }

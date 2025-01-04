@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserCreateService, UserReadService, User
     public User create(UserCreate userCreate) {
         User user = User.from(userCreate, uuidHolder);
         user = userRepository.save(user);
-        certificationService.send(userCreate.getEmail(), user.getId(), user.getCertificationCode());
+        certificationService.send(userCreate.email(), user.id(), user.certificationCode());
         return user;
     }
 
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserCreateService, UserReadService, User
     @Transactional
     public void verifyEmail(long id, String certificationCode) {
         User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Users", id));
-        if (!certificationCode.equals(user.getCertificationCode())) {
+        if (!certificationCode.equals(user.certificationCode())) {
             throw new CertificationCodeNotMatchedException();
         }
         user = user.certificate(certificationCode);

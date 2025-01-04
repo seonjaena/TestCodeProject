@@ -3,10 +3,7 @@ package com.example.demo.post.domain;
 import com.example.demo.mock.TestClockHolder;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -32,13 +29,13 @@ public class PostTest {
         Post post = Post.from(writer, postCreate, new TestClockHolder(1679530673958L));
 
         // then
-        assertThat(post.getContent()).isEqualTo("helloworld");
-        assertThat(post.getCreatedAt()).isEqualTo(1679530673958L);
-        assertThat(post.getWriter().getEmail()).isEqualTo("test@test.com");
-        assertThat(post.getWriter().getNickname()).isEqualTo("test");
-        assertThat(post.getWriter().getAddress()).isEqualTo("Seoul");
-        assertThat(post.getWriter().getStatus()).isEqualTo(UserStatus.ACTIVE);
-        assertThat(post.getWriter().getCertificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaaa");
+        assertThat(post.content()).isEqualTo("helloworld");
+        assertThat(post.createdAt()).isEqualTo(1679530673958L);
+        assertThat(post.writer().email()).isEqualTo("test@test.com");
+        assertThat(post.writer().nickname()).isEqualTo("test");
+        assertThat(post.writer().address()).isEqualTo("Seoul");
+        assertThat(post.writer().status()).isEqualTo(UserStatus.ACTIVE);
+        assertThat(post.writer().certificationCode()).isEqualTo("aaaaaaaaaaaaa-aaaaaaaa-aaaaa-aaaaaaa");
     }
 
     @Test
@@ -68,8 +65,8 @@ public class PostTest {
         post = post.update(postUpdate, new TestClockHolder(1679530673958L));
 
         // then
-        assertThat(post.getContent()).isEqualTo("foobar");
-        assertThat(post.getModifiedAt()).isEqualTo(1679530673958L);
+        assertThat(post.content()).isEqualTo("foobar");
+        assertThat(post.modifiedAt()).isEqualTo(1679530673958L);
     }
 
 }
